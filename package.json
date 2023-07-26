@@ -1,13 +1,13 @@
 {
   "name": "ostad_mern",
   "version": "1.0.0",
-  "description": "This is my first project.",
+  "description": "",
   "main": "class-1.js",
   "scripts": {
-    "start-dev":"nodemon class-1.js"
+    "start-dev": "nodemon class-1.js"
   },
   "keywords": [],
-  "author": "Md. Imran Nazir",
+  "author": "",
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^3.0.1"
