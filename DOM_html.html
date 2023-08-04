@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Document Object Model</title>
+</head>
+<body style="text-align:center;">
+    <div class="class1">
+        <p name="myClass">1</p>
+        <button name="myClass">Click1</button>
+    </div>
+
+    <div class="class2">  <!--cookie-->
+        <p id="cookie">Click the below button to see cookie</p>
+        <button onclick="findCookie()">Click2</button>
+    </div>
+
+    <div class="class3">  <!--domain-->
+        <p id="domain">Click the below button to see domain name</p>
+        <button onclick="findDomain()">Click3</button>
+    </div>
+
+    <div class="class4">  <!--lastModify-->
+        <p id="lastModify">Click the below button to see last modify</p>
+        <button onclick="findLastModify()">Click4</button>
+    </div>
+    
+    <div class="class5">  <!--title-->
+        <p id="title">Click the below button to see title</p>
+        <button onclick="findTitle()">Click5</button>
+    </div>
+
+    <div class="class6">  <!--URL-->
+        <p id="url">Click the below button to see URL</p>
+        <button onclick="findURL()">Click6</button>
+    </div>
+ 
+    <div class="class7">  <!--replace-->
+        <p id="reWrite">Click the below button to see re-Write</p>
+        <button onclick="reWrite()">Click7</button>
+    </div>
+
+    <div class="class8">  <!--writing new window-->
+        <p id="newWindowWrite">Click the below button to see writing on new window</p>
+        <button onclick="newWindowWrite()()">Click8</button>
+    </div>
+
+    <div class="class9">  <!--number of specific tag displaying-->
+        <p></p>
+        <p></p>
+        <p></p>
+        <p id="length">Click the below button to see length of any tag</p>
+        <input type="text" onclick="len()" placeholder="finding length of p tag"></input>
+    </div><br><br><br><br>
+    
+    <div class="class10">  <!--adding two numbers through input-->
+        <input id="num1"><br><br>
+        <input id="num2"><br><br>
+        <button onclick="AddTwoNum()">Add</button>
+    </div>
+
+    <div class="class11">  <!--adding and removing style to any class-->
+        <h1 id="main" class="">Md. Imran Nazir is a new MERN developer.</h1>
+        <button onclick="addStyle()">AddStyle</button><br>
+        <button onclick="removeStyle()">RemoveStyle</button>
+    </div><br>
+    
+    <div class="adding_new_element"> <!--adding new items in list-->
+        <ul id="myList"></ul>
+        <input id="inPut">
+        <button onclick="AddNewElement()">Click for adding new element</button>
+    </div><br><br>
+
+    <div class="change_attribute"> <!--attribute changing-->
+        <img id="myImg" src="https://media.licdn.com/dms/image/D5603AQEkvFgv3mzCpQ/profile-displayphoto-shrink_800_800/0/1684860348810?e=1696464000&v=beta&t=IKXai6cX9u2SHvoN1ITIKW26Hl-6VbuUub2MP6MI9ww" alt="image" width="100px" height="100px" style="padding-bottom: 10px;"><br>
+        <button onclick="imageAttributeChange()">Change</button>
+    </div><br><br>
+
+    <div class="qSelector">
+        <h1>h1</h1>
+        <h2 class="myClass">h2</h2>
+        <h3 id = "myId">h3</h3>
+        <h4 name="h4">h4</h4>
+        <input placeholder="----">
+        <button onclick="Selector()">Take me down</button>
+    </div><br><br>
+
+
+    <script>
+        
+        var elements = document.getElementsByName("myClass");
+        elements[2].innerHTML = "Eid Mubarak"
+
+        findCookie=()=>{ 
+            var cookie = document.cookie
+            document.getElementById("cookie").innerHTML = "Cookie is: "+ cookie
+            //ফাকা থাকবে কারণ আমরা এখনো কুকি সেট করিনাই।
+        }
+        findDomain=()=>{ 
+            var Domain = document.getElementById("domain");
+            Domain.innerHTML = "Domain name is: "+ document.domain;
+        }
+        function findLastModify(){ 
+            var lastModified = document.lastModified;
+            document.getElementById("lastModify").innerHTML = "Last modified is:"+ lastModified;
+        }
+        function findTitle(){ 
+            var title = document.title;
+            document.getElementById("title").innerHTML = "Title is:"+ title;
+        }
+        function findURL(){ 
+            var url = document.URL;
+            document.getElementById("url").innerHTML = "URL is:"+ url;
+        }
+        function reWrite(){
+            document.open("text/html","replace")
+            document.write("<h1>Document opened and all other values are cleared.</h1>")
+            document.close()
+        }
+        function newWindowWrite(){
+            var w = window.open()
+            w.document.open();
+            w.document.write("<h3>Hello programmers!</h3>")
+            w.document.close()
+        }
+
+        function len(){
+            var x = document.getElementsByTagName("p");
+            document.getElementById("length").innerHTML = x.length;
+        }
+        
+        function AddTwoNum(){
+            var n1 = document.getElementById("num1").value;
+            var n2 = document.getElementById("num2").value;
+            var z = parseFloat(n1) + parseFloat(n2);
+            alert(z)
+        }
+        //add and removing style in css
+        function addStyle(){
+            document.getElementById("main").classList.add('text-primary');
+        }
+        function removeStyle(){
+            document.getElementById("main").classList.remove('text-primary');
+        }
+
+        //adding new element in list from input
+        function AddNewElement(){
+            var inputValue = document.getElementById("inPut").value;
+            var list = document.getElementById("myList")
+            var li = document.createElement("li");
+            li.innerHTML = inputValue
+            list.appendChild(li)
+        }
+
+        function imageAttributeChange(){
+            var demo = document.getElementById("myImg");
+            demo.width= "200";
+            demo.height = "200";
+        }
+
+        function Selector(){
+            document.querySelector('p').innerHTML = "hi h1";
+            document.querySelector('.myClass').innerHTML = "hi h2";
+            document.querySelector('#myId').innerHTML = "hi h3";
+            document.querySelector('h4[name="h4"]').innerHTML = "hi h4";
+            document.querySelector('input').placeholder = "hi input";
+        }
+
+    </script>
+</body>
+</html>
